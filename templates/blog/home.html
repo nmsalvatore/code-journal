@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block nav-items %}
+
+    <a class="btn" href="{% url 'new-post' %}">New Post</a>
+
+{% endblock nav-items %}
+
+{% block content %}
+    <div class="post-directory">
+        {% for post in posts %}
+            <a class="post-preview" href="{% url 'view-post' slug=post.slug %}">
+                <p>{{ post.title }}</p>
+                <small>Published on {{ post.datetime_created | date:"F n, Y"}}</small>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock content %}

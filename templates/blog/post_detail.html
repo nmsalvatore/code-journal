@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load markdown_extras %}
+
+{% block nav-items %}
+
+    <a class="btn" href="{% url 'edit-post' post.id %}">Edit</a>
+
+{% endblock nav-items %}
+
+{% block content %}
+
+    <main class="post-detail-wrapper">
+        <h2>{{ post.title }}</h2>
+        <div class="markdown-body">
+            <p>{{ post.body | markdown | safe }}</p>
+        </div>
+    </main>
+
+{% endblock content %}
