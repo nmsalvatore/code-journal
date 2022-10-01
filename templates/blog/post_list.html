@@ -7,16 +7,29 @@
 {% endblock nav-items %}
 
 {% block content %}
-    <div class="post-directory">
-        {% for post in posts %}
-            <a class="post-preview" href="{% url 'view-post' slug=post.slug %}">
-                <p>{{ post.title }}</p>
-                {% if post.is_updated %}
-                    <small>Updated on {{ post.date_updated }}</small>
-                {% else %}
-                    <small>Published on {{ post.date_created }}</small>
-                {% endif %}
-            </a>
-        {% endfor %}
+    <div class="home-content">
+        <div class="tag-list">
+            <ul>
+                {% for tag in tags %}
+                    <li>
+                        <a class="tag" href="{% url 'filter-by-tag' tag %}">
+                        #{{ tag }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="post-directory">
+            {% for post in posts %}
+                <a class="post-preview" href="{% url 'view-post' slug=post.slug %}">
+                    <p>{{ post.title }}</p>
+                    {% if post.is_updated %}
+                        <small>Updated on {{ post.date_updated }}</small>
+                    {% else %}
+                        <small>Published on {{ post.date_created }}</small>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}

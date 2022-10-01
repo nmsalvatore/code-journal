@@ -1,5 +1,5 @@
 :root {
-    --primary-text: #ccc;
+    --primary-text: #eee;
     --secondary-text: #aaa;
     --link-text: light-blue;
     --background: #333;
@@ -94,7 +94,6 @@ main.post-detail-wrapper {
 
 .post-directory {
     border-top: 1px solid var(--container-border);
-    border-bottom: 1px solid var(--container-border);
 }
 
     .post-directory .post-preview {
@@ -224,5 +223,30 @@ a.post-preview {
 
 .tag {
     text-decoration: none;
-    color: #fff;
+    color: #8cc6fc;
 }
+
+small {
+    color: var(--secondary-text);
+}
+
+.home-content {
+    display: flex;
+}
+
+    .tag-list {
+        padding: 1rem;
+        margin-right: 4rem;
+    }
+
+    .tag-list > ul {
+        list-style-type: none;
+    }
+
+    .tag-list > ul > li {
+        margin-bottom: 0.5rem;
+    }
+
+    .post-directory {
+        width: 100%;
+    }

@@ -1,15 +1,21 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView
+from django.urls import reverse
 from .models import Post
 from .forms import PostForm
+import itertools
 
 
 @login_required(login_url='/accounts/login/')
 def home(request):
     posts = Post.objects.filter(author=request.user)
-    context = {'posts': posts}
+    tags = Post.objects.values_list('tags')
+    tags = list(itertools.chain(*tags))
+    tags = set(itertools.chain(*tags))
+    context = {'posts': posts, 'tags': sorted(tags)}
     return render(request, 'blog/post_list.html', context)
 
 
@@ -56,7 +62,10 @@ def delete_post(request, pk):
 @login_required(login_url='/accounts/login/')
 def filter_by_tag(request, tag):
     posts = Post.objects.filter(author=request.user, tags__contains=[tag])
-    context = {'posts': posts}
+    tags = Post.objects.values_list('tags')
+    tags = list(itertools.chain(*tags))
+    tags = set(itertools.chain(*tags))
+    context = {'posts': posts, 'tags': sorted(tags)}
     return render(request, 'blog/post_list.html', context)
 
 
