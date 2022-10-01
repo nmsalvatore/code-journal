@@ -190,6 +190,19 @@ a.btn {
     font-family: inherit;
 }
 
+.delete.btn {
+    border: 1px solid #dd3333;
+    background: #dd3333;
+}
+
+.delete-container {
+    margin: 1rem;
+}
+
+.delete-container .delete.btn {
+    margin-top: 1rem;
+}
+
 #logout {
     margin-left: 2rem;
     color: var(--secondary-text);
