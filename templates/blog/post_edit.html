@@ -3,7 +3,7 @@
 {% block nav-items %}
 
     <button class="btn" type="submit" form="postForm">Update</button>
-    <a class="btn" href="{% url 'delete-post' post.id %}">Delete</a>
+    <a class="btn delete" href="{% url 'delete-post' post.id %}">Delete</a>
 
 {% endblock nav-items %}
 
