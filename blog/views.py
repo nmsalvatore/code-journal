@@ -8,7 +8,7 @@ from .forms import PostForm
 
 @login_required(login_url='/accounts/login/')
 def home(request):
-    posts = Post.objects.all()
+    posts = Post.objects.filter(author=request.user)
     context = {'posts': posts}
     return render(request, 'blog/home.html', context)
 
@@ -19,6 +19,7 @@ def new_post(request):
 
     if request.method == 'POST':
         form = PostForm(request.POST)
+        form.instance.author = request.user
         form.save()
         return redirect('home')
 
@@ -43,8 +44,13 @@ def edit_post(request, pk):
 @login_required(login_url='/accounts/login/')
 def delete_post(request, pk):
     post = Post.objects.get(id=pk)
-    post.delete()
-    return redirect('home')
+    context = {'post': post}
+
+    if request.method == 'POST':
+        post.delete()
+        return redirect('home')
+
+    return render(request, 'blog/post_delete.html', context)
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):
