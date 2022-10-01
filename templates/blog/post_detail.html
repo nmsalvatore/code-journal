@@ -11,6 +11,20 @@
 
     <main class="post-detail-wrapper">
         <h2>{{ post.title }}</h2>
+        <small>Published on {{ post.date_created }}</small>
+        {% if post.is_updated %}
+            <br>
+            <small>Updated on {{ post.date_updated }}</small>
+        {% endif %}
+        <div class="tags-container">
+            {% for tag in post.tags %}
+                <small>
+                    <a class="tag" href="{% url 'filter-by-tag' tag %}">
+                        #{{ tag }}
+                    </a>
+                </small>
+            {% endfor %}
+        </div>
         <div class="markdown-body">
             <p>{{ post.body | markdown | safe }}</p>
         </div>

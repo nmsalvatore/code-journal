@@ -10,7 +10,7 @@ from .forms import PostForm
 def home(request):
     posts = Post.objects.filter(author=request.user)
     context = {'posts': posts}
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/post_list.html', context)
 
 
 @login_required(login_url='/accounts/login/')
@@ -51,6 +51,13 @@ def delete_post(request, pk):
         return redirect('home')
 
     return render(request, 'blog/post_delete.html', context)
+
+
+@login_required(login_url='/accounts/login/')
+def filter_by_tag(request, tag):
+    posts = Post.objects.filter(author=request.user, tags__contains=[tag])
+    context = {'posts': posts}
+    return render(request, 'blog/post_list.html', context)
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):

@@ -80,7 +80,7 @@ main.post-detail-wrapper {
 }
 
     main.post-detail-wrapper > h2 {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
 .login-container {
@@ -216,4 +216,13 @@ a.post-preview {
 /* markdown styling */
 .hljs {
     background: none;
+}
+
+.tags-container {
+    margin-bottom: 1rem;
+}
+
+.tag {
+    text-decoration: none;
+    color: #fff;
 }
