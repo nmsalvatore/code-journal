@@ -11,7 +11,11 @@
         {% for post in posts %}
             <a class="post-preview" href="{% url 'view-post' slug=post.slug %}">
                 <p>{{ post.title }}</p>
-                <small>Published on {{ post.datetime_created | date:"F n, Y"}}</small>
+                {% if post.is_updated %}
+                    <small>Updated on {{ post.date_updated }}</small>
+                {% else %}
+                    <small>Published on {{ post.date_created }}</small>
+                {% endif %}
             </a>
         {% endfor %}
     </div>
