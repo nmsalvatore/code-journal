@@ -1,13 +1,20 @@
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 from django.db import models
+from datetime import timedelta
 
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=80)
     body = models.TextField()
-    datetime_created = models.DateTimeField(auto_now_add=True)
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
+    date_updated = models.DateTimeField(auto_now=True, null=True)
     slug = models.SlugField(null=True, unique=True)
+
+    @property
+    def is_updated(self):
+        publish_window = self.date_created + timedelta(seconds=1)
+        return self.date_updated > publish_window
 
     def __str__(self) -> str:
         return self.body
@@ -21,4 +28,4 @@ class Post(models.Model):
         return super().save(*args, **kwargs)
 
     class Meta:
-        ordering = ['-datetime_created']
+        ordering = ['-date_created']
