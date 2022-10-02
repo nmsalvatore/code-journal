@@ -1,7 +1,7 @@
 // remove all labels from forms
 labels = document.querySelectorAll('form p label')
 labels.forEach(label => {
-    label.style.display = 'none';
+  label.style.display = 'none';
 });
 
 // autogrow textarea
@@ -12,3 +12,12 @@ growers.forEach((grower) => {
     grower.dataset.replicatedValue = textarea.value;
   });
 });
+
+// add comma to any item separated by a space for array conversion
+const tags = document.getElementById('id_tags');
+tags.addEventListener('keydown', e => {
+  const lastChar = tags.value.slice(-1)
+  if (e.code == 'Space' && lastChar != ',' && lastChar != ' ') {
+    tags.value += ',';
+  }
+})
