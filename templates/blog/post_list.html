@@ -9,15 +9,13 @@
 {% block content %}
     <div class="home-content">
         <div class="tag-list">
-            <ul>
-                {% for tag in tags %}
-                    <li>
-                        <a class="tag" href="{% url 'filter-by-tag' tag %}">
-                        #{{ tag }}
-                        </a>
-                    </li>
-                {% endfor %}
-            </ul>
+            {% for tag in tags %}
+                <small>
+                    <a class="tag" href="{% url 'filter-by-tag' tag %}">
+                    #{{ tag }}
+                    </a>
+                </small>
+            {% endfor %}
         </div>
         <div class="post-directory">
             {% for post in posts %}

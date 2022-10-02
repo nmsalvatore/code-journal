@@ -2,8 +2,8 @@
 
 {% block nav-items %}
 
+    <a class="btn" href="{% url 'view-post' post.slug %}">Back</a>
     <button class="btn" type="submit" form="postForm">Update</button>
-    <a class="btn delete" href="{% url 'delete-post' post.id %}">Delete</a>
 
 {% endblock nav-items %}
 

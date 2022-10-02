@@ -4,6 +4,7 @@
 {% block nav-items %}
 
     <a class="btn" href="{% url 'edit-post' post.id %}">Edit</a>
+    <a class="btn delete" href="{% url 'delete-post' post.id %}">Delete</a>
 
 {% endblock nav-items %}
 
