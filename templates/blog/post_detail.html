@@ -3,32 +3,33 @@
 
 {% block nav-items %}
 
-    <a class="btn" href="{% url 'edit-post' post.id %}">Edit</a>
+    <a class="btn edit" href="{% url 'edit-post' post.id %}">Edit</a>
     <a class="btn delete" href="{% url 'delete-post' post.id %}">Delete</a>
 
 {% endblock nav-items %}
 
 {% block content %}
 
-    <main class="post-detail-wrapper">
-        <h2>{{ post.title }}</h2>
-        <small>Published on {{ post.date_created }}</small>
-        {% if post.is_updated %}
-            <br>
-            <small>Updated on {{ post.date_updated }}</small>
-        {% endif %}
-        <div class="tags-container">
-            {% for tag in post.tags %}
-                <small>
-                    <a class="tag" href="{% url 'filter-by-tag' tag %}">
-                        #{{ tag }}
-                    </a>
-                </small>
-            {% endfor %}
-        </div>
-        <div class="markdown-body">
+    <main class="post-detail">
+        <header>
+            <h2 class="title">{{ post.title }}</h2>
+            <small class="published">Published on {{ post.date_created }}</small>
+            {% if post.is_updated %}
+            <small class="updated">Updated on {{ post.date_updated }}</small>
+            {% endif %}
+            <div class="tags">
+                {% for tag in post.tags %}
+                    <small class="tag">
+                        <a href="{% url 'filter-by-tag' tag %}">
+                            #{{ tag }}
+                        </a>
+                    </small>
+                {% endfor %}
+            </div>
+        </header>
+        <main class="markdown-body">
             <p>{{ post.body | markdown | safe }}</p>
-        </div>
+        </main>
     </main>
 
 {% endblock content %}

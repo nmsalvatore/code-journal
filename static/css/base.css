@@ -1,0 +1,112 @@
+:root {
+    --background-color: #fff;
+    --navbar-color: #333;
+    --primary-dark-text-color: #333;
+    --secondary-dark-text-color: #666;
+    --primary-light-text-color: #eee;
+    --secondary-light-text-color: #aaa;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: -webkit-fill-available;
+    font-size: 16px;
+    font-family: Roboto, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+nav.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #ddd;
+    background-color: var(--navbar-color);
+}
+
+    nav.navbar .title {
+        font-weight: 400;
+    }
+
+    nav.navbar .title > a,
+    nav.navbar .nav-items > .btn {
+        color: var(--primary-light-text-color);
+    }
+
+    nav.navbar .logout {
+        color: var(--secondary-light-text-color);
+    }
+
+main.dashboard {
+    display: flex;
+    flex: 1;
+}
+
+    main.dashboard .tag-directory,
+    main.dashboard .post-directory {
+        display: flex;
+        flex-direction: column;
+    }
+
+    main.dashboard .tag-directory {
+        padding: 1rem 4.5rem 1rem 1.5rem;
+        border-right: 1px solid #eaeaea;
+        background: #fafafa;
+    }
+
+    main.dashboard .post-directory {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    main.dashboard .post-directory 
+    .post-preview {
+        padding: 1.5rem;
+        border-bottom: 1px solid #eee;
+    }
+
+    main.dashboard .post-directory 
+    .post-preview .title {
+        margin-right: 1rem;
+    }
+
+    main.dashboard .tag-directory
+    .tag {
+        padding: 0.5rem 0;
+    }
+
+main.post-detail {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+    main.post-detail header {
+        display: flex;
+        flex-direction: column;
+        margin-top: 1rem;
+        margin-bottom: 2rem;
+    }
+
+.title > a,
+.tag > a,
+.post-preview,
+.btn {
+    text-decoration: none;
+}

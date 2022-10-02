@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/agate.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/markdown.css' %}">
@@ -13,13 +16,13 @@
 <body class="container">
     {% if user.is_authenticated %}
         <nav class="navbar"">
-            <h1>
+            <h1 class="title">
                 <a href="{% url 'home' %}">journal.</a>
             </h1>
-            <div>
+            <div class="nav-items">
                 {% block nav-items %}
                 {% endblock nav-items %}
-                <a id="logout" href="{% url 'logout' %}">Log Out</a>
+                <a class="logout" href="{% url 'logout' %}">Log Out</a>
             </div>
         </nav>
     {% endif %}

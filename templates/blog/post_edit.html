@@ -2,24 +2,14 @@
 
 {% block nav-items %}
 
-    <a class="btn" href="{% url 'view-post' post.slug %}">Back</a>
-    <button class="btn" type="submit" form="postForm">Update</button>
+    <a class="btn back" href="{% url 'view-post' post.slug %}">Back</a>
+    <button class="btn update" type="submit" form="postForm">Update</button>
 
 {% endblock nav-items %}
 
 {% block content %}
-    <div class="new-post-container">
-        <form id="postForm" method="POST">
-            {% csrf_token %}
-            
-            {% for field in form.visible_fields %}
-                {% if field.name == 'body' %}
-                    <div class="grow-wrap">{{ field }}</div>
-                {% else %}
-                    {{ field }}
-                {% endif %}
-            {% endfor %}
-        </form>
-    </div>
+    
+    {% include 'blog/form_new_post.html' %}
+    
 {% endblock content %}
 

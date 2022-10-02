@@ -2,16 +2,16 @@
 
 {% block nav-items %}
 
-    <a class="btn" href="{% url 'new-post' %}">New Post</a>
+    <a class="btn new" href="{% url 'new-post' %}">New Post</a>
 
 {% endblock nav-items %}
 
 {% block content %}
-    <div class="home-content">
-        <div class="tag-list">
+    <main class="dashboard">
+        <div class="tag-directory">
             {% for tag in tags %}
-                <small>
-                    <a class="tag" href="{% url 'filter-by-tag' tag %}">
+                <small class="tag">
+                    <a href="{% url 'filter-by-tag' tag %}">
                     #{{ tag }}
                     </a>
                 </small>
@@ -20,14 +20,18 @@
         <div class="post-directory">
             {% for post in posts %}
                 <a class="post-preview" href="{% url 'view-post' post.slug %}">
-                    <p>{{ post.title }}</p>
+                    <p class="title">{{ post.title }}</p>
                     {% if post.is_updated %}
-                        <small>Updated on {{ post.date_updated }}</small>
+                        <small class="updated">
+                            Updated on {{ post.date_updated }}
+                        </small>
                     {% else %}
-                        <small>Published on {{ post.date_created }}</small>
+                        <small class="published">
+                            Published on {{ post.date_created }}
+                        </small>
                     {% endif %}
                 </a>
             {% endfor %}
         </div>
-    </div>
+    </main>
 {% endblock content %}

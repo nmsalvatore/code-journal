@@ -1,21 +1,11 @@
 {% extends 'base.html' %}
 
 {% block nav-items %}
-    <button class="btn" type="submit" form="postForm">Publish</button>
+    <button class="btn publish" type="submit" form="postForm">Publish</button>
 {% endblock nav-items %}
 
 {% block content %}
-    <div class="new-post-container">
-        <form id="postForm" method="POST">
-            {% csrf_token %}
-            
-            {% for field in form.visible_fields %}
-                {% if field.name == 'body' %}
-                    <div class="grow-wrap">{{ field }}</div>
-                {% else %}
-                    {{ field }}
-                {% endif %}
-            {% endfor %}
-        </form>
-    </div>
+    
+    {% include 'blog/form_new_post.html' %}
+    
 {% endblock %}

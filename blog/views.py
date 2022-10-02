@@ -16,7 +16,7 @@ def home(request):
     tags = list(itertools.chain(*tags))
     tags = set(itertools.chain(*tags))
     context = {'posts': posts, 'tags': sorted(tags)}
-    return render(request, 'blog/post_list.html', context)
+    return render(request, 'blog/dashboard.html', context)
 
 
 @login_required(login_url='/accounts/login/')
@@ -66,7 +66,7 @@ def filter_by_tag(request, tag):
     tags = list(itertools.chain(*tags))
     tags = set(itertools.chain(*tags))
     context = {'posts': posts, 'tags': sorted(tags)}
-    return render(request, 'blog/post_list.html', context)
+    return render(request, 'blog/dashboard.html', context)
 
 
 class PostDetailView(LoginRequiredMixin, DetailView):
