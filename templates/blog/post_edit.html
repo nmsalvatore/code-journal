@@ -1,15 +1,34 @@
 {% extends 'base.html' %}
 
+{% block content %}
+    
+<main class="new-post container">
+    <form class="form" id="postForm" method="POST">
+        {% csrf_token %}
+        
+        {% for field in form.visible_fields %}
+            {% if field.name == 'body' %}
+                <div class="grow-wrap">{{ field }}</div>
+            {% else %}
+                {{ field }}
+            {% endif %}
+        {% endfor %}
+        <div class="footer">
+            <span id="word_counter">Word Count: 0</span>
+            <div class="buttons">
+                <a class="btn back" href="{% url 'view-post' post.slug %}">Back</a>
+                <button class="btn update" type="submit" form="postForm">Update</button>
+            </div>
+        </div>
+    </form>
+</main>
+    
+{% endblock content %}
+
 {% block nav-items %}
 
-    <a class="btn back" href="{% url 'view-post' post.slug %}">Back</a>
-    <button class="btn update" type="submit" form="postForm">Update</button>
+    
 
 {% endblock nav-items %}
 
-{% block content %}
-    
-    {% include 'blog/form_new_post.html' %}
-    
-{% endblock content %}
 

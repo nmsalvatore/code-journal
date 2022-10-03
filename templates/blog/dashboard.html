@@ -2,21 +2,14 @@
 
 {% block nav-items %}
 
-    <a class="btn new" href="{% url 'new-post' %}">New Post</a>
+    <a class="btn new desktop" href="{% url 'new-post' %}">
+        New Post
+    </a>
 
 {% endblock nav-items %}
 
 {% block content %}
-    <main class="dashboard">
-        <div class="tag-directory">
-            {% for tag in tags %}
-                <small class="tag">
-                    <a href="{% url 'filter-by-tag' tag %}">
-                    #{{ tag }}
-                    </a>
-                </small>
-            {% endfor %}
-        </div>
+    <main class="dashboard container">
         <div class="post-directory">
             {% for post in posts %}
                 <a class="post-preview" href="{% url 'view-post' post.slug %}">
@@ -33,5 +26,26 @@
                 </a>
             {% endfor %}
         </div>
+        <ul class="tag-directory">
+            <li>
+                <a href="{% url 'home' %}">#all</a>
+            </li>
+            {% for tag in tags %}
+            <li>
+                <a href="{% url 'filter-by-tag' tag %}">#{{ tag }}</li></a>
+            {% endfor %}
+        </ul>
+        <a class="btn new mobile" href="{% url 'new-post' %}">
+            <span class="material-symbols-outlined">edit</span>
+        </a>
     </main>
 {% endblock content %}
+
+{% block menu %}
+
+    <div class="tag-dropdown-icon-container">
+        <span class="current-tag">#{{ tag }}</span>
+        <span class="menu icon material-symbols-outlined">keyboard_arrow_down</span>
+    </div>
+
+{% endblock menu%}

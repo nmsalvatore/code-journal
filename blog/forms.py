@@ -16,7 +16,7 @@ class PostForm(ModelForm):
                 'autocomplete': 'off',
             }),
             'tags': forms.TextInput(attrs={
-                'placeholder': 'Tags (maximum length is 10 characters, separate tags with a comma)',
+                'placeholder': 'Tags (maximum length is 20 characters)',
                 'autocomplete': 'off',
             }),
             'body': forms.Textarea(attrs={

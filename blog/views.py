@@ -3,7 +3,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.views.generic import DetailView
-from django.urls import reverse
 from .models import Post
 from .forms import PostForm
 import itertools
@@ -27,7 +26,7 @@ def new_post(request):
         form = PostForm(request.POST)
         form.instance.author = request.user
         form.save()
-        return redirect('home')
+        return redirect('view-post', slug=form.instance.slug)
 
     context = {'form': form}
     return render(request, 'blog/post_new.html', context)
@@ -65,7 +64,7 @@ def filter_by_tag(request, tag):
     tags = Post.objects.values_list('tags')
     tags = list(itertools.chain(*tags))
     tags = set(itertools.chain(*tags))
-    context = {'posts': posts, 'tags': sorted(tags)}
+    context = {'posts': posts, 'tags': sorted(tags), 'tag': tag}
     return render(request, 'blog/dashboard.html', context)
 
 

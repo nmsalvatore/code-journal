@@ -10,7 +10,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=80)
     body = models.TextField()
-    tags = ArrayField(models.CharField(max_length=10, blank=True), null=True)
+    tags = ArrayField(models.CharField(max_length=20, blank=True), null=True)
     date_created = models.DateTimeField(auto_now_add=True, null=True)
     date_updated = models.DateTimeField(auto_now=True, null=True)
     slug = models.SlugField(null=True, unique=True)

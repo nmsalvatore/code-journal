@@ -7,22 +7,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/agate.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/lioshi.min.css">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/markdown.css' %}">
-    <title>thetinycontainer | blog</title>
+    <title>thetinycontainer | journal</title>
 </head>
-<body class="container">
+<body>
     {% if user.is_authenticated %}
-        <nav class="navbar"">
-            <h1 class="title">
-                <a href="{% url 'home' %}">journal.</a>
-            </h1>
-            <div class="nav-items">
-                {% block nav-items %}
-                {% endblock nav-items %}
-                <a class="logout" href="{% url 'logout' %}">Log Out</a>
+        <nav class="navbar">
+            <nav class="navbar-secondary">
+                <div class="container">
+                    <a class="logout" href="{% url 'logout' %}">
+                        <span class="material-symbols-outlined icon">
+                            logout
+                        </span>
+                    </a>
+                </div>
+            </nav>
+            <div class="container">
+                <h1 class="title">
+                    <a href="{% url 'home' %}">journal.</a>
+                </h1>
+                <div class="nav-items">
+                    {% block nav-items %}
+                    {% endblock nav-items %}
+                </div>
+                {% block menu %}
+                {% endblock menu%}
             </div>
         </nav>
     {% endif %}

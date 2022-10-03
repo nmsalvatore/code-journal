@@ -1,16 +1,9 @@
 {% extends 'base.html' %}
 {% load markdown_extras %}
 
-{% block nav-items %}
-
-    <a class="btn edit" href="{% url 'edit-post' post.id %}">Edit</a>
-    <a class="btn delete" href="{% url 'delete-post' post.id %}">Delete</a>
-
-{% endblock nav-items %}
-
 {% block content %}
 
-    <main class="post-detail">
+    <main class="post-detail container">
         <header>
             <h2 class="title">{{ post.title }}</h2>
             <small class="published">Published on {{ post.date_created }}</small>
@@ -30,6 +23,10 @@
         <main class="markdown-body">
             <p>{{ post.body | markdown | safe }}</p>
         </main>
+        <div class="buttons">
+            <a class="btn edit" href="{% url 'edit-post' post.id %}">Edit</a>
+            <a class="btn delete" href="{% url 'delete-post' post.id %}">Delete</a>
+        </div>
     </main>
 
 {% endblock content %}
