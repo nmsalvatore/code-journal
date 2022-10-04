@@ -149,7 +149,8 @@ main.dashboard {
 main.post-detail {
     display: flex;
     flex-direction: column;
-    padding: 1rem 2rem;
+    padding: 1rem 2rem 2rem 2rem;
+    flex: 1;
 }
 
     main.post-detail header {
@@ -167,6 +168,10 @@ main.post-detail {
 
     main.post-detail a {
         color: var(--link-color);
+    }
+
+    main.post-detail .markdown-body {
+        flex: 1;
     }
 
 main.delete-confirmation {

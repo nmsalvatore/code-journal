@@ -1,11 +1,12 @@
 from django.urls import path
-from .views import home, new_post, edit_post, delete_post, filter_by_tag, PostDetailView
+from . import views
 
 urlpatterns = [
-    path('posts/all/', home, name='home'),
-    path('post/new/', new_post, name='new-post'),
-    path('post/edit/<int:pk>/', edit_post, name='edit-post'),
-    path('post/delete/<int:pk>/', delete_post, name='delete-post'),
-    path('posts/filter-by-tag/<str:tag>/', filter_by_tag, name='filter-by-tag'),
-    path('post/<slug:slug>/', PostDetailView.as_view(), name='view-post'),
+    path('', views.auth_redirect),
+    path('posts/all/', views.home, name='home'),
+    path('post/new/', views.new_post, name='new-post'),
+    path('post/edit/<int:pk>/', views.edit_post, name='edit-post'),
+    path('post/delete/<int:pk>/', views.delete_post, name='delete-post'),
+    path('posts/filter-by-tag/<str:tag>/', views.filter_by_tag, name='filter-by-tag'),
+    path('post/<slug:slug>/', views.PostDetailView.as_view(), name='view-post'),
 ]

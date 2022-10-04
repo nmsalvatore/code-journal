@@ -72,3 +72,10 @@ class PostDetailView(LoginRequiredMixin, DetailView):
     login_url = '/accounts/login/'
     model = Post
     template_name = 'blog/post_detail.html'
+
+
+def auth_redirect(request):
+    if request.user.is_authenticated:
+        return redirect('home')
+    else:
+        return redirect('login')
