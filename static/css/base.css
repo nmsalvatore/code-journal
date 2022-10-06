@@ -387,7 +387,7 @@ ul.tag-directory {
     .btn.new.mobile {
         display: block;
         background: var(--primary-button-color);
-        position: absolute;
+        position: fixed;
         border-radius: 50%;
         bottom: 2rem;
         right: 2rem;
