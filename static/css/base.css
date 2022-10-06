@@ -205,6 +205,7 @@ main.delete-confirmation {
         padding: 1rem;
         font: inherit;
         grid-area: 1 / 1 / 2 / 2;
+        line-height: 1.5;
     }
 
 /* post form styling */
@@ -230,21 +231,11 @@ main.new-post {
         border: none;
         padding: 1rem 0;
         width: 100%;
-        line-height: 1.5;
-    }
-
-    main.new-post .form textarea {
-        flex: 1;
-        margin-bottom: 4rem;
     }
 
     main.new-post .form textarea::placeholder,
     main.new-post .form input::placeholder {
         color: var(--placeholder-text-color);
-    }
-
-    main.new-post .form textarea {
-        border-bottom: 1px solid var(--container-border);
     }
 
     main.new-post .form input:focus,
