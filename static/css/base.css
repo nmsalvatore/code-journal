@@ -121,8 +121,7 @@ main.dashboard {
 
     main.dashboard .post-directory 
     .post-preview {
-        padding: 1rem 1rem;
-        margin: 0 1rem;
+        padding: 1rem 2rem;
     }
 
     main.dashboard .post-directory 
@@ -359,15 +358,33 @@ ul.tag-directory {
     }
 
 @media only screen and (max-width: 600px) {
+    nav.navbar > .container {
+        padding: 1rem;
+    }
+
+    nav.navbar-secondary > .container {
+        padding: 0.5rem 1rem;
+    }
+
+    main.dashboard .post-directory .post-preview,
+    main.post-detail,
+    main.new-post,
+    main.delete-confirmation {
+        padding: 1rem;
+    }
+
     ul.tag-directory {
         display: none;
         position: absolute;
         right: 0;
         top: 0;
         width: 100%;
+        padding: 1rem;
     }
 
     .tag-dropdown-icon-container {
+        position: absolute;
+        right: 0.5rem;
         display: flex;
     }
 
@@ -380,8 +397,8 @@ ul.tag-directory {
         background: var(--primary-button-color);
         position: fixed;
         border-radius: 50%;
-        bottom: 2rem;
-        right: 2rem;
+        bottom: 1rem;
+        right: 1rem;
         height: 3rem;
         line-height: 4rem;
         width: 3rem;
