@@ -17,15 +17,6 @@
 <body>
     {% if user.is_authenticated %}
         <nav class="navbar">
-            <nav class="navbar-secondary">
-                <div class="container">
-                    <a class="logout" href="{% url 'logout' %}">
-                        <span class="material-symbols-outlined icon">
-                            logout
-                        </span>
-                    </a>
-                </div>
-            </nav>
             <div class="container">
                 <h1 class="title">
                     <a href="{% url 'home' %}">journal.</a>

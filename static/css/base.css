@@ -359,18 +359,25 @@ ul.tag-directory {
 
 @media only screen and (max-width: 600px) {
     nav.navbar > .container {
-        padding: 1rem;
+        padding: 2rem 1rem 1.5rem;
     }
 
     nav.navbar-secondary > .container {
         padding: 0.5rem 1rem;
     }
 
-    main.dashboard .post-directory .post-preview,
     main.post-detail,
     main.new-post,
     main.delete-confirmation {
-        padding: 1rem;
+        padding: 2rem 1rem;
+    }
+
+    main.dashboard .post-directory .post-preview {
+        padding: 1.5rem 1rem;
+    }
+
+    main.dashboard .post-directory .post-preview .title {
+        font-weight: 500;
     }
 
     ul.tag-directory {
@@ -397,11 +404,11 @@ ul.tag-directory {
         background: var(--primary-button-color);
         position: fixed;
         border-radius: 50%;
-        bottom: 1rem;
+        bottom: 2rem;
         right: 1rem;
-        height: 3rem;
-        line-height: 4rem;
-        width: 3rem;
+        height: 3.5rem;
+        line-height: 4.5rem;
+        width: 3.5rem;
         text-align: center;
     }
 }
