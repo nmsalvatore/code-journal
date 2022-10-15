@@ -42,10 +42,19 @@ const menuIcon = document.querySelector('.menu.icon');
 if (menuIcon) {
   menuIcon.addEventListener('click', () => {
     const tagDirectory = document.querySelector('ul.tag-directory');
+    const postDirectory = document.querySelector('div.post-directory');
+    const newBtnMobile = document.querySelector('.btn.new.mobile');
+    
     if (!tagDirectory.style.display || tagDirectory.style.display == 'none') {
       tagDirectory.style.display = 'block';
-    } else {
-      tagDirectory.style.display = 'none'
+      postDirectory.style.display = 'none';
+      newBtnMobile.style.display = 'none';
+    }
+    
+    else {
+      tagDirectory.style.display = 'none';
+      postDirectory.style.display = 'flex';
+      newBtnMobile.style.display = 'block';
     }
   });
 }
