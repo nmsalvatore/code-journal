@@ -36,4 +36,4 @@ class Post(models.Model):
         super().save_model(request, obj, form, change)
 
     class Meta:
-        ordering = ['-date_created']
+        ordering = ['-date_updated']
